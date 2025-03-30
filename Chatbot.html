@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelegit - AI Use Case</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #60a5fa;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --text: #374151;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: #f9fafb;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Use Case Section Styles */
+        .use-case-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+        }
+        
+        .use-case-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .use-case-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .use-case-content {
+            background-color: white;
+            padding: 3rem 0;
+        }
+        
+        .use-case-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .use-case-section h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .use-case-section h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--dark);
+        }
+        
+        .numbered-list {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+        
+        .numbered-list li {
+            margin-bottom: 1rem;
+        }
+        
+        .bullets {
+            list-style-type: disc;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .bullets li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-box {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            margin: 2rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .highlight-box h3 {
+            margin-top: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+        
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d5db;
+        }
+        
+        /* Animations and Effects */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .use-case-header {
+                padding: 3rem 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .use-case-header h1 {
+                font-size: 2rem;
+            }
+            
+            .use-case-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-brain"></i>Inte<span>legit</span>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#about">About Us</a>
+                    <a href="index.html#careers">Careers</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <!-- Use Case Content Section -->
+    <section class="use-case-content">
+        <div class="container">
+            <img src="AIchatbot.jpg" alt="Top Banner" style="width: 100%; display: block;">
+
+            <!-- Infoly AI Chatbot Section -->
+            <div class="use-case-section fade-in">
+                <h2>Infoly AI Chatbot</h2>
+                
+                <h3>Problem Statement</h3>
+                <p>Organizations often struggle with timely access to internal information, especially when employees need quick answers to domain-specific questions. In many companies, Go-to-Market (GTM) teams—including sales, marketing, and customer success—frequently rely on the product team to clarify product details, technical specifications, or feature-related queries. However, due to the product team's workload and competing priorities, responses can be delayed, slowing down the GTM teams' workflows and reducing their overall efficiency.</p>
+                
+                <p>The goal is to build an intelligent, chat-based AI assistant that is trained on internal company datasets such as product documentation, wikis, knowledge bases, and training manuals. This AI chatbot should enable employees to instantly access accurate information and get their queries resolved in real time without human intervention.</p>
+                
+                <p>In addition, the company wants to provide a similar experience to external users—such as customers, prospects, and partners—by training the AI model on publicly available website data (e.g., FAQs, product pages, support documentation). The chatbot will be exposed over a public URL, allowing users to ask questions and receive immediate, reliable answers, thus improving customer engagement and reducing support ticket volume.</p>
+            </div>
+            
+            <!-- Solutioning Approach Section -->
+            <div class="use-case-section fade-in">
+                <h2>Solutioning Approach</h2>
+                <p>To address the challenge of enabling real-time, accurate responses to user queries based on internal company datasets, we implemented a multi-layered AI solution that prioritized data security, scalability, and precision.</p>
+                
+                <ol class="list-style">
+                    <li>
+                        <h3>Fine-Tuning the AI Model on Internal Datasets</h3>
+                        <p>We began by selecting a high-performing open-source large language model (LLM) as the base for our solution. Before fine-tuning, we performed a comprehensive data preprocessing step that included anonymization and the removal of Personally Identifiable Information (PII) from all internal documents. This was crucial not only for ensuring compliance with data privacy regulations but also for maintaining the confidentiality of sensitive organizational information.</p>
+                        
+                        <p>The fine-tuning process was then carried out using the cleaned dataset, which consisted of product documentation, internal wikis, playbooks, training material, and other proprietary knowledge sources. By customizing the model with this internal context, we enabled it to understand domain-specific terminology and respond accurately to company-specific queries.</p>
+                    </li>
+                    
+                    <li>
+                        <h3>Retrieval-Augmented Generation (RAG) for Scalable Contextualization</h3>
+                        <p>Given the extensive volume of internal documentation, it was not feasible to fit the entire knowledge base into the model's prompt context window. To address this, we implemented a Retrieval-Augmented Generation (RAG) architecture on top of the fine-tuned model.</p>
+                        
+                        <p>RAG allowed the system to dynamically retrieve relevant pieces of information from a pre-indexed document store in real time, based on the user's query. These relevant document snippets were then appended to the user query as context before being passed to the model for inference. This approach significantly enhanced the accuracy and relevance of the responses, especially for complex or nuanced questions.</p>
+                    </li>
+                    
+                    <li>
+                        <h3>Secure and Compliant Model Deployment</h3>
+                        <p>To meet the client's stringent security and compliance requirements, the entire AI model deployment was hosted within their private cloud infrastructure. Specifically, the model was deployed on a dedicated GPU-enabled instance within the client's secure cloud environment, ensuring that sensitive data and model inferences remained entirely within their controlled perimeter.</p>
+                    </li>
+                    
+                    <li>
+                        <h3>Vector Store Integration Using OpenSearch</h3>
+                        <p>The document embeddings used for retrieval in the RAG system were stored in a vector database built on Amazon OpenSearch Service, which was already part of the client's AWS environment. This ensured that all vector search operations occurred within the same secure cloud infrastructure and no data was transmitted to external servers or third-party platforms. The use of OpenSearch also allowed for seamless scalability, high availability, and low-latency retrievals.</p>
+                    </li>
+                    
+                    <li>
+                        <h3>Enhanced Chunk Ranking with Cohere's Re-Ranker on AWS Bedrock</h3>
+                        <p>To further improve the quality of the retrieved documents and ensure that the most relevant information was presented to the AI model, we integrated Cohere's Re-Ranker via AWS Bedrock. The re-ranker scored and sorted the retrieved chunks based on semantic relevance to the user query. This re-ranking mechanism played a critical role in handling complex queries with high accuracy, ensuring that the AI model always received the most pertinent information for response generation.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <!-- Challenges Section -->
+            <div class="use-case-section fade-in">
+                <h2>Challenges and Mitigation Strategies</h2>
+                <p>As with any enterprise-grade AI deployment, building the Infoly AI Chatbot involved navigating several technical, operational, and infrastructural challenges. Below is a breakdown of the key challenges we encountered and the strategies we used to overcome them:</p>
+                
+                <ol class="list-style">
+                    <li>
+                        <h3>Model Accuracy and Evaluation</h3>
+                        <p>Ensuring high accuracy in responses was critical to the chatbot's adoption and effectiveness, especially for internal GTM teams relying on precise, domain-specific information.</p>
+                        
+                        <ul class="bullets">
+                            <li><strong>Evaluation Dataset Creation:</strong> To benchmark the performance of the model, we developed a comprehensive Evaluation Dataset that closely mimicked real-world user queries. This dataset was built in collaboration with key stakeholders from the GTM teams to reflect the breadth and depth of questions typically encountered in their day-to-day roles.</li>
+                            
+                            <li><strong>Human-in-the-Loop (HITL) QA Process:</strong> Our Quality Assurance team conducted detailed manual evaluations of the model outputs through a HITL framework. This iterative feedback loop helped fine-tune both the model and retrieval pipeline to ensure consistent and reliable performance across query categories.</li>
+                            
+                            <li><strong>Domain-Specific Fine-Tuning:</strong> The base LLM was fine-tuned using proprietary internal documentation, which allowed the model to adapt to the client's domain-specific vocabulary, tone, and structure. This domain adaptation was crucial for enhancing the model's understanding of nuanced terms and internal acronyms.</li>
+                            
+                            <li><strong>Customized Re-Ranker Training:</strong> In addition to fine-tuning the LLM, we also fine-tuned Cohere's Re-Ranker on the client's specific document-query pairs. This ensured that document chunk relevance scoring was aligned with the actual needs of the end users, further improving response accuracy.</li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <h3>Model Latency and Infrastructure Optimization</h3>
+                        <p>Achieving high throughput with minimal latency was a key challenge, especially given the real-time expectations of internal users.</p>
+                        
+                        <ul class="bullets">
+                            <li><strong>A100 GPU Deployment:</strong> To ensure low-latency inference and handle concurrent query loads efficiently, we deployed the LLM on NVIDIA A100 GPUs within the client's private cloud infrastructure. These high-performance GPUs significantly reduced response times and ensured smooth performance during peak usage hours.</li>
+                            
+                            <li><strong>Inference Optimization:</strong> We implemented multiple optimizations at the model serving layer, including dynamic batching, precision tuning (FP16), and token streaming to further reduce latency without compromising output quality.</li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <h3>End-to-End System Integration</h3>
+                        <p>Making the AI chatbot easily accessible to both internal and external users required seamless integration with various platforms and user touchpoints.</p>
+                        
+                        <ul class="bullets">
+                            <li><strong>Slack Integration for Internal Users:</strong> To align with existing workflows, we integrated the model's APIs into the client's internal Slack workspace. This allowed GTM team members to query the AI chatbot directly within their daily communication tool, leading to higher adoption and usability.</li>
+                            
+                            <li><strong>External Access via Shareable Chatbot Link:</strong> For external stakeholders (customers, partners, prospects), we developed a standalone web-based chatbot interface. This chatbot was powered by a large-context LLM such as Gemini, trained exclusively on the client's publicly available website data (e.g., FAQs, documentation, product pages). The result was a highly intuitive, branded experience that could be easily shared via a link.</li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <h3>Real-Time Model Updates and Data Freshness</h3>
+                        <p>Keeping the chatbot updated with the latest internal and external information was vital for maintaining trust and usefulness.</p>
+                        
+                        <ul class="bullets">
+                            <li><strong>Custom Update and Retraining Pipeline:</strong> We built a modular, automated retraining pipeline that continuously ingested new data—such as updated documentation, support articles, or release notes—into the model's knowledge base.</li>
+                            
+                            <li><strong>Graph-Based RAG System:</strong> To support efficient updates, we engineered a Graph-Based RAG (Retrieval-Augmented Generation) system. This structure enabled hierarchical and relationship-aware document retrieval, which significantly reduced redundancy and allowed for near real-time retraining of the retrieval system whenever new data was added.</li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <h3>Mitigating Model Hallucinations</h3>
+                        <p>One of the most critical risks in deploying LLMs is hallucination—where the model generates information that is not grounded in actual source data.</p>
+                        
+                        <ul class="bullets">
+                            <li><strong>LLM-as-a-Judge Evaluation Framework:</strong> To combat hallucinations, we implemented an LLM-as-a-Judge (LaaJ) framework, wherein a separate LLM was used to critically evaluate whether the chatbot's responses were properly grounded in the retrieved context. This acted as a secondary validation layer before final delivery to the user.</li>
+                            
+                            <li><strong>Graph-Based Context Grounding:</strong> The use of a graph-based RAG architecture provided stronger semantic and structural grounding by maintaining relationships between topics and content nodes. This architecture played a pivotal role in significantly reducing hallucinations and ensuring contextual fidelity.</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <div class="highlight-box">
+                    <h3>Outcome</h3>
+                    <p>As a result of these measures, the system achieved over 98% accuracy on evaluation queries, with hallucination rates reduced to negligible levels.</p>
+                </div>
+            </div>
+            
+            <!-- Back to Services -->
+            <div class="text-center" style="text-align: center; margin-top: 3rem;">
+                <a href="index.html#services" class="btn">Back to Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-brain"></i>Intele<span>git</span>
+                    </div>
+                    <p>Transforming businesses with intelligent AI solutions that drive efficiency and innovation.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#careers">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">AI Chatbots</a></li>
+                        <li><a href="#">Multi-Agent Systems</a></li>
+                        <li><a href="#">Image Recognition</a></li>
+                        <li><a href="#">Voice AI</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Intelegit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Intersection Observer for fade-in animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
